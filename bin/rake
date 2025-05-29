@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-APP_PATH = File.expand_path('../config/application', __dir__)
-require_relative "../config/boot"
-require "rake"
-require "rails"
-
-# Manually load Base to avoid uninitialized constant error
-require "rails/command/base"
-require "rails/commands/rake/rake_command"
