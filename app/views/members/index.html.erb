@@ -1,0 +1,42 @@
+<h3 class="my-3 text-center">
+  <%= controller_name.humanize + ':' %>
+  <%= action_name.humanize %>
+  <span class="badge badge-info bg-info">
+    <%= @members.count %>
+  </span>
+</h3>
+<br />
+
+<table class="table table-striped table-hover table-bordered w-50 m-auto">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">User</th>
+      <th scope="col">Tenant</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= member.user %></td>
+        <td><%= member.tenant %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Member', new_member_path %>
+
+<hr/>
+
+<%= form_tag invite_members_path, method: :get do %>
+  <%= email_field_tag 'email' %>
+  <%= submit_tag("Invite a member") %>
+<% end %>
